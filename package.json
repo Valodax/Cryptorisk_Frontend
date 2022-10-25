@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.15",
+    "@web3uikit/core": "^0.2.2",
+    "@web3uikit/icons": "^0.2.2",
+    "@web3uikit/web3": "^0.2.2",
+    "moralis-v1": "^1.11.0",
     "next": "12.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-moralis": "^1.4.2"
   },
   "devDependencies": {
     "eslint": "8.26.0",
