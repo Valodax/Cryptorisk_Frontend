@@ -10,7 +10,7 @@ export default function LotteryEntrance() {
     // These get re-rendered every time due to our connect button!
     const chainId = parseInt(chainIdHex);
     // console.log(`ChainId is ${chainId}`)
-    const raffleAddress = chainId in contractAddresses ? contractAddresses[chainId][0] : null;
+    const contractAddress = chainId in contractAddresses ? contractAddresses[chainId][0] : null;
 
     // State hooks
     // https://stackoverflow.com/questions/58252454/react-hooks-using-usestate-vs-just-variables
@@ -27,7 +27,7 @@ export default function LotteryEntrance() {
         isFetching,
     } = useWeb3Contract({
         abi: abi,
-        contractAddress: raffleAddress,
+        contractAddress: contractAddress,
         functionName: "enterRaffle",
         msgValue: entranceFee,
         params: {},
@@ -37,28 +37,28 @@ export default function LotteryEntrance() {
 
     const { runContractFunction: getEntranceFee } = useWeb3Contract({
         abi: abi,
-        contractAddress: raffleAddress, // specify the networkId
+        contractAddress: contractAddress, // specify the networkId
         functionName: "getEntranceFee",
         params: {},
     });
 
     const { runContractFunction: getPlayersNumber } = useWeb3Contract({
         abi: abi,
-        contractAddress: raffleAddress,
+        contractAddress: contractAddress,
         functionName: "getNumberOfPlayers",
         params: {},
     });
 
     const { runContractFunction: getRecentWinner } = useWeb3Contract({
         abi: abi,
-        contractAddress: raffleAddress,
+        contractAddress: contractAddress,
         functionName: "getRecentWinner",
         params: {},
     });
 
     async function updateUIValues() {
         // Another way we could make a contract call:
-        // const options = { abi, contractAddress: raffleAddress }
+        // const options = { abi, contractAddress: contractAddress }
         // const fee = await Moralis.executeFunction({
         //     functionName: "getEntranceFee",
         //     ...options,
@@ -82,7 +82,7 @@ export default function LotteryEntrance() {
 
     // An example filter for listening for events, we will learn more on this next Front end lesson
     // const filter = {
-    //     address: raffleAddress,
+    //     address: contractAddress,
     //     topics: [
     //         // the name of the event, parnetheses containing the data type of each event, no spaces
     //         utils.id("RaffleEnter(address)"),
@@ -110,9 +110,8 @@ export default function LotteryEntrance() {
     };
 
     return (
-        <div className="p-5">
-            <h1 className="py-4 px-4 font-bold text-3xl">Lottery</h1>
-            {raffleAddress ? (
+        <div>
+            {contractAddress ? (
                 <>
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
@@ -127,14 +126,14 @@ export default function LotteryEntrance() {
                         disabled={isLoading || isFetching}
                     >
                         {isLoading || isFetching ? (
-                            <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div>
+                            <div className="animate-spin spinner-border h-6 w-6 border-b-2 rounded-full"></div>
                         ) : (
-                            "Enter Raffle"
+                            <div>
+                                Join Player Lobby (Entrance Fee:{" "}
+                                {ethers.utils.formatUnits(entranceFee, "ether")} ETH)
+                            </div>
                         )}
                     </button>
-                    <div>Entrance Fee: {ethers.utils.formatUnits(entranceFee, "ether")} ETH</div>
-                    <div>The current number of players is: {numberOfPlayers}</div>
-                    <div>The most previous winner was: {recentWinner}</div>
                 </>
             ) : (
                 <div>Please connect to a supported chain </div>
