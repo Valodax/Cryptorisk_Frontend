@@ -1,40 +1,50 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import LotteryEntrance from "../components/LotteryEntrance";
+import PlayerCounter from "../components/PlayerCounter";
+import Main from "../components/Main";
 import { useMoralis } from "react-moralis";
+import MainStart from "../components/MainStart";
+import Game from "../components/Game";
+import Information from "../components/Information";
 
 const supportedChains = ["5", "31337"];
 
 export default function Home() {
-  const { isWeb3Enabled, chainId } = useMoralis();
+    const { isWeb3Enabled, chainId } = useMoralis();
 
-  return (
-    <div className="pb-2 pl-2 pr-2 pt-2">
-      <div className="bg-gray-600 pt-8 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-3xl px-8">
-        <Head>
-          <title>CryptoRisk</title>
-          <meta name="Cryptorisk" content="Cryptorisk" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <Header />
-      </div>
-      <div className="text-center py-10">
-        <div>
-          {isWeb3Enabled ? (
-            <div>
-              {supportedChains.includes(parseInt(chainId).toString()) ? (
-                <LotteryEntrance />
-              ) : (
-                <div className="text-white">{`Please switch to a supported chainId. The supported Chain Ids are: ${supportedChains}`}</div>
-              )}
+    return (
+        <div className="pb-2 pl-2 pr-2 pt-2 align-middle">
+            <div className="bg-gray-600 pt-8 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-3xl px-8">
+                <Head>
+                    <title>CryptoRisk</title>
+                    <meta name="Cryptorisk" content="Cryptorisk" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <div>
+                    <Header />
+                </div>
             </div>
-          ) : (
-            <div className="text-white">
-              Please Connect Your Wallet To Continue
+            <div className="flex flex-row place-content-center justify-between">
+                <div className="inline-grid px-8">
+                    <div className="border-2 sm:rounded-3xl content-center py-2">
+                        <MainStart />
+                    </div>
+                    <div className="border-2 py-20 sm:rounded-3xl">
+                        <Information />
+                    </div>
+                </div>
+                <div className="inline-grid place-content-center border-2 py-2 sm:rounded-3xl">
+                    <Game />
+                </div>
+                <div className="inline-grid sm:rounded-3xl px-8">
+                    <div className="border-2 py-2 sm:rounded-3xl ">
+                        <PlayerCounter />
+                    </div>
+                    <div className="border-2 py-20 sm:rounded-3xl ">
+                        <PlayerCounter />
+                    </div>
+                </div>
             </div>
-          )}
         </div>
-      </div>
-    </div>
-  );
+    );
 }
