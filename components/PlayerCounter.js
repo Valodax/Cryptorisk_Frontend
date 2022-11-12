@@ -14,7 +14,7 @@ export default function PlayerCounter() {
             header={["Player", "Address"]}
             noPagination
             onRowClick={function noRefCheck() {}}
-            tableBackgroundColor="none"
+            tableBackgroundColor="darkgrey"
         />
     );
 }

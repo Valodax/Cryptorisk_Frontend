@@ -26,21 +26,21 @@ export default function Home() {
             </div>
             <div className="flex flex-row place-content-center justify-between">
                 <div className="inline-grid px-8">
-                    <div className="border-2 sm:rounded-3xl content-center py-2">
+                    <div className="sm:rounded-3xl content-center py-2">
                         <MainStart />
                     </div>
-                    <div className="border-2 py-20 sm:rounded-3xl">
+                    <div className="py-20 sm:rounded-3xl">
                         <Information />
                     </div>
                 </div>
-                <div className="inline-grid place-content-center border-2 py-2 sm:rounded-3xl">
+                <div className="inline-grid place-content-center py-2 sm:rounded-3xl">
                     <Game />
                 </div>
                 <div className="inline-grid sm:rounded-3xl px-8">
-                    <div className="border-2 py-2 sm:rounded-3xl ">
+                    <div className="py-2 sm:rounded-3xl ">
                         <PlayerCounter />
                     </div>
-                    <div className="border-2 py-20 sm:rounded-3xl ">
+                    <div className="py-20 sm:rounded-3xl ">
                         <PlayerCounter />
                     </div>
                 </div>
