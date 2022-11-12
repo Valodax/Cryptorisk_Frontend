@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import PlayerCounter from "../components/PlayerCounter";
 import Main from "../components/Main";
 import { useMoralis } from "react-moralis";
+
 const supportedChains = ["5", "31337"];
 
 export default function MainStart() {
