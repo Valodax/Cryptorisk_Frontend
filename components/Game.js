@@ -5,8 +5,6 @@ import Europe from "../components/Europe";
 import Africa from "../components/Africa";
 import Asia from "../components/Asia";
 import Oceania from "../components/Oceania";
-import territory00 from "../assets/risk.png";
-
 export default function Game() {
   return (
     <div className="static w-[1150px] h-[700px] border-2 ">

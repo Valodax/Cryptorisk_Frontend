@@ -7,6 +7,7 @@ import MainStart from "../components/MainStart";
 import Game from "../components/Game";
 import Controller from "../components/Controller";
 import Information from "../components/Information";
+import Logo from "../components/Risk_board.svg";
 
 const supportedChains = ["5", "31337"];
 
@@ -27,6 +28,11 @@ export default function Home() {
       </div>
       <div className="flex flex-row place-content-center justify-between">
         <div className="inline-grid px-8">
+          <div>
+            <div>
+              <Logo className="h-8 w-auto sm:h-10" alt="Site Title" />
+            </div>
+          </div>
           <div className="sm:rounded-3xl content-center py-2">
             <MainStart />
           </div>
