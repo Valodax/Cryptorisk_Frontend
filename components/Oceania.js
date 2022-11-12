@@ -6,7 +6,7 @@ import territory41 from "../assets/Regions/41.png";
 
 export default function Game() {
   return (
-    <div className="relative top-[430px] left-[650px] scale-[60%]">
+    <div className="relative top-[405px] left-[665px] scale-[60%]">
       <div className="absolute top-[0px] left-[0px]">
         <Image src={territory38} alt="territory38" />
       </div>
