@@ -1,5 +1,8 @@
 import Image from "next/image";
+import svg from "../assets/Regions/0.svg";
+import svg2 from "../assets/map.svg";
 import territory0 from "../assets/Regions/0.png";
+import territorysvg0 from "../assets/Regions/0.svg";
 import territory1 from "../assets/Regions/1.png";
 import territory2 from "../assets/Regions/2.png";
 import territory3 from "../assets/Regions/3.png";
@@ -39,6 +42,8 @@ export default function Game() {
       <div className="absolute left-[156px] top-[391px]">
         <Image src={territory8} alt="territory8" />
       </div>
+      <div className="absolute left-[500px] top-[391px]"></div>
+      <div></div>
     </div>
   );
 }

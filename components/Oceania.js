@@ -17,7 +17,7 @@ export default function Game() {
         <Image src={territory40} alt="territory40" />
       </div>
       <div className="absolute top-[109px] left-[176px]">
-        <Image src={territory41} alt="territory41" />
+        <Image src={territory41} alt="territory41" href="facebook.com" />
       </div>
     </div>
   );
