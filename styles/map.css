@@ -3,7 +3,11 @@
 }
 
 .cls-26 {
-  fill: #000000;
+  fill: #ffffff;
+}
+
+.cls-1 {
+  fill: white
 }
 
 .territory-0,
@@ -54,6 +58,7 @@
 
 .territory-0:hover,
 .territory-1:hover,
+.territory-2:hover,
 .territory-3:hover,
 .territory-4:hover,
 .territory-5:hover,
@@ -93,115 +98,115 @@
 .territory-39:hover,
 .territory-40:hover,
 .territory-41:hover {
-  fill: rgb(250, 250, 250);
+  fill: rgb(54, 54, 54);
 }
 
 .territory-0 {
-  fill: #b40202;
+  fill: #fd8f00;
 }
 
 .territory-1 {
-  fill: #000000;
+  fill: #ce811c;
 }
 
 .territory-2 {
-  fill: #176d4c;
+  fill: #8f714b;
 }
 
 .territory-3 {
-  fill: #141414;
+  fill: #8b5712;
 }
 
 .territory-4 {
-  fill: #000000;
+  fill: #f3b769;
 }
 
 .territory-5 {
-  fill: #e4d3c3;
+  fill: #a76003;
 }
 
 .territory-6 {
-  fill: #000000;
+  fill: #f8dfbf;
 }
 
 .territory-7 {
-  fill: #5c0d0d;
+  fill: #50422f;
 }
 
 .territory-8 {
-  fill: #030097;
+  fill: #fd8f00;
 }
 
 .territory-9 {
-  fill: #676969;
+  fill: #5154f1;
 }
 
 .territory-10 {
-  fill: #0cb5e9;
+  fill: #1f2180;
 }
 
 .territory-11 {
-  fill: #000000;
+  fill: #0004ff;
 }
 
 .territory-12 {
-  fill: #031e27;
+  fill: #040672;
 }
 
 .territory-13 {
-  fill: #000000;
+  fill: #012525;
 }
 
 .territory-14 {
-  fill: #000000;
+  fill: #06caca;
 }
 
 .territory-15 {
-  fill: #080c18;
+  fill: #4dfafa;
 }
 
 .territory-16 {
-  fill: #000000;
+  fill: #268888;
 }
 
 .territory-17 {
-  fill: #39393b;
+  fill: #3f6969;
 }
 
 .territory-18 {
-  fill: #081847;
+  fill: #016e6e;
 }
 
 .territory-19 {
-  fill: #02217c;
+  fill: #15d4d4;
 }
 
 .territory-20 {
-  fill: #1a0300;
+  fill: #ff0000;
 }
 
 .territory-21 {
-  fill: #640c0c;
+  fill: #d30000;
 }
 
 .territory-22 {
-  fill: #791717;
+  fill: #9e0000;
 }
 
 .territory-23 {
-  fill: #000000;
+  fill: #660000;
 }
 
 .territory-24 {
-  fill: #5c0505;
+  fill: #ff2424;
 }
 
 .territory-25 {
-  fill: #ff504a;
+  fill: #ff5454;
 }
 
 .territory-26 {
-  fill: #000000;
+  fill: #15ff00;
 }
 
 .territory-27 {
