@@ -98,7 +98,7 @@
 .territory-39:hover,
 .territory-40:hover,
 .territory-41:hover {
-  fill: rgb(54, 54, 54);
+  opacity: 0.5;
 }
 
 .territory-0 {
