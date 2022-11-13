@@ -93,13 +93,6 @@ export default function MainStart() {
     }
   }, [isWeb3Enabled]);
 
-  useEffect(() => {
-    if (numberOfPlayers < 4) {
-    } else {
-      <div></div>;
-    }
-  });
-
   return (
     <div>
       {isWeb3Enabled ? (
