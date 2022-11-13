@@ -1,13 +1,9 @@
-.background {
-  fill: #212024;
-}
-
 .cls-26 {
-  fill: #ffffff;
+    fill: #ffffff;
 }
 
 .cls-1 {
-  fill: white
+    fill: #375bd2;
 }
 
 .territory-0,
@@ -52,8 +48,8 @@
 .territory-39,
 .territory-40,
 .territory-41 {
-  stroke: rgb(255, 255, 255);
-  stroke-width: 1.5px;
+    stroke: rgb(255, 255, 255);
+    stroke-width: 1.5px;
 }
 
 .territory-0:hover,
@@ -98,173 +94,173 @@
 .territory-39:hover,
 .territory-40:hover,
 .territory-41:hover {
-  fill: rgb(54, 54, 54);
+    fill: #ffffff;
 }
 
 .territory-0 {
-  fill: #fd8f00;
+    fill: #fd8f00;
 }
 
 .territory-1 {
-  fill: #ce811c;
+    fill: #ce811c;
 }
 
 .territory-2 {
-  fill: #8f714b;
+    fill: #8f714b;
 }
 
 .territory-3 {
-  fill: #8b5712;
+    fill: #8b5712;
 }
 
 .territory-4 {
-  fill: #f3b769;
+    fill: #f3b769;
 }
 
 .territory-5 {
-  fill: #a76003;
+    fill: #a76003;
 }
 
 .territory-6 {
-  fill: #f8dfbf;
+    fill: #f8dfbf;
 }
 
 .territory-7 {
-  fill: #50422f;
+    fill: #50422f;
 }
 
 .territory-8 {
-  fill: #fd8f00;
+    fill: #fd8f00;
 }
 
 .territory-9 {
-  fill: #5154f1;
+    fill: #5154f1;
 }
 
 .territory-10 {
-  fill: #1f2180;
+    fill: #1f2180;
 }
 
 .territory-11 {
-  fill: #0004ff;
+    fill: #0004ff;
 }
 
 .territory-12 {
-  fill: #040672;
+    fill: #040672;
 }
 
 .territory-13 {
-  fill: #012525;
+    fill: #012525;
 }
 
 .territory-14 {
-  fill: #06caca;
+    fill: #06caca;
 }
 
 .territory-15 {
-  fill: #4dfafa;
+    fill: #4dfafa;
 }
 
 .territory-16 {
-  fill: #268888;
+    fill: #268888;
 }
 
 .territory-17 {
-  fill: #3f6969;
+    fill: #3f6969;
 }
 
 .territory-18 {
-  fill: #016e6e;
+    fill: #016e6e;
 }
 
 .territory-19 {
-  fill: #15d4d4;
+    fill: #15d4d4;
 }
 
 .territory-20 {
-  fill: #ff0000;
+    fill: #ff0000;
 }
 
 .territory-21 {
-  fill: #d30000;
+    fill: #d30000;
 }
 
 .territory-22 {
-  fill: #9e0000;
+    fill: #9e0000;
 }
 
 .territory-23 {
-  fill: #660000;
+    fill: #660000;
 }
 
 .territory-24 {
-  fill: #ff2424;
+    fill: #ff2424;
 }
 
 .territory-25 {
-  fill: #ff5454;
+    fill: #ff5454;
 }
 
 .territory-26 {
-  fill: #15ff00;
+    fill: #15ff00;
 }
 
 .territory-27 {
-  fill: #000000;
+    fill: #000000;
 }
 
 .territory-28 {
-  fill: #28850e;
+    fill: #28850e;
 }
 
 .territory-29 {
-  fill: #6e776c;
+    fill: #6e776c;
 }
 
 .territory-30 {
-  fill: #8a1470;
+    fill: #8a1470;
 }
 
 .territory-31 {
-  fill: #37ff00;
+    fill: #37ff00;
 }
 
 .territory-32 {
-  fill: #000000;
+    fill: #000000;
 }
 
 .territory-33 {
-  fill: #104b00;
+    fill: #104b00;
 }
 
 .territory-34 {
-  fill: #c0ffac;
+    fill: #c0ffac;
 }
 
 .territory-35 {
-  fill: #155204;
+    fill: #155204;
 }
 
 .territory-36 {
-  fill: #4b5049;
+    fill: #4b5049;
 }
 
 .territory-37 {
-  fill: #000000;
+    fill: #000000;
 }
 
 .territory-38 {
-  fill: #c004d1;
+    fill: #c004d1;
 }
 
 .territory-39 {
-  fill: #a30505;
+    fill: #a30505;
 }
 
 .territory-40 {
-  fill: #721d79;
+    fill: #721d79;
 }
 
 .territory-41 {
-  fill: #5c0e63;
+    fill: #5c0e63;
 }

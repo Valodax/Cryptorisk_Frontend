@@ -1,20 +1,24 @@
 import { Table, Tag } from "@web3uikit/core";
+import { mainAddresses, mainABI } from "../constants";
+import { useMoralis, useWeb3Contract } from "react-moralis";
+import { useEffect, useState } from "react";
+import { useNotification } from "@web3uikit/core";
+import { ethers } from "ethers";
 
 export default function Controller() {
-  return (
-    <Table
-      alignCellItems="right"
-      columnsConfig="130px 1fr"
-      data={[
-        [<Tag color="red" text="Player 1" />, "0x18...130e"],
-        [<Tag color="green" text="Player 2" />, "0x18...130e"],
-        [<Tag color="yellow" text="Player 3" />, "0x18...130e"],
-        [<Tag color="blue" text="Player 4" />, "0x18...130e"],
-      ]}
-      header={["Player", "Address"]}
-      noPagination
-      onRowClick={function noRefCheck() {}}
-      tableBackgroundColor="darkgrey"
-    />
-  );
+    return (
+        <Table
+            alignCellItems="center"
+            columnsConfig="auto"
+            data={[
+                [<Tag color="red" text="Deploy" />],
+                [<Tag color="green" text="Attack" />],
+                [<Tag color="yellow" text="Fortify" />],
+            ]}
+            header={[]}
+            noPagination
+            onRowClick={function noRefCheck() {}}
+            tableBackgroundColor="darkgrey"
+        />
+    );
 }

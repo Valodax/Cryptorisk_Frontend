@@ -1,7 +1,15 @@
-const contractAddresses = require("./contractAddresses.json");
-const abi = require("./abi.json");
+const controlsAddresses = require("./controlsAddresses.json")
+const mainAddresses = require("./mainAddresses.json")
+const dataAddresses = require("./dataAddresses.json")
+const mainABI = require("./mainABI.json")
+const controlsABI = require("./controlsABI.json")
+const dataABI = require("./dataABI.json")
 
 module.exports = {
-    contractAddresses,
-    abi,
-};
+    dataAddresses,
+    mainAddresses,
+    controlsAddresses,
+    mainABI,
+    controlsABI,
+    dataABI,
+}
