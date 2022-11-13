@@ -94,7 +94,11 @@
 .territory-39:hover,
 .territory-40:hover,
 .territory-41:hover {
+<<<<<<< HEAD
     fill: #ffffff;
+=======
+  opacity: 0.5;
+>>>>>>> c08c894fc4e442eb99010ae9a7f03368e2d135ea
 }
 
 .territory-0 {
