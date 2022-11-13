@@ -94,10 +94,14 @@
 .territory-39:hover,
 .territory-40:hover,
 .territory-41:hover {
+<<<<<<< HEAD
     
     opacity: 0.5;
     stroke: rgb(187, 12, 12);
     stroke-width: 1.5px;
+=======
+    fill: #ffffff;
+>>>>>>> 7d583ff62e5ec2122aa6ad923884652a09ffc81c
 }
 
 .territory-0 {
