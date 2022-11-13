@@ -61,7 +61,8 @@ export default function PlayerCounter() {
   });
 
   async function updatePlayerUI() {
-    const numberOfPlayersFromCall = (await getNumberOfPlayers()).toString();
+    let numberOfPlayersFromCall = (await getNumberOfPlayers()).toString();
+    console.log(numberOfPlayersFromCall);
     setNumberOfPlayers(numberOfPlayersFromCall);
     const player1 = await getPlayer1();
     const player2 = await getPlayer2();

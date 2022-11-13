@@ -14,16 +14,16 @@ import { useMoralis, useWeb3Contract } from "react-moralis";
 import { useEffect, useState } from "react";
 import { useNotification } from "@web3uikit/core";
 import { ethers } from "ethers";
-const supportedChains = ["5", "31337"];
+const supportedChains = ["5", "31337", "43113"];
 
 export default function MainStart() {
   const { Moralis, isWeb3Enabled, account, chainId: chainIdHex } = useMoralis();
   // These get re-rendered every time due to our connect button!
   const chainId = parseInt(chainIdHex);
-  console.log(`ChainId is ${chainId}`);
   const mainAddress =
     chainId in mainAddresses ? mainAddresses[chainId][0] : null;
-
+  console.log(`ChainId is ${chainId}`);
+  console.log(`mainAddress is ${mainAddress}`);
   // State hooks
   // https://stackoverflow.com/questions/58252454/react-hooks-using-usestate-vs-just-variables
   const [entranceFee, setEntranceFee] = useState("0");
@@ -31,7 +31,6 @@ export default function MainStart() {
   const [lobbyFull, setLobbyFull] = useState(false);
 
   const dispatch = useNotification();
-
   const {
     runContractFunction: enterLobby,
     isLoading,
@@ -102,7 +101,7 @@ export default function MainStart() {
   });
 
   return (
-    <div class="invisible">
+    <div>
       {isWeb3Enabled ? (
         <div className="flex place-content-center">
           {supportedChains.includes(parseInt(chainId).toString()) ? (
