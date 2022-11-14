@@ -59,6 +59,13 @@ export default function PlayerCounter() {
     params: { index: 3 },
     onError: (error) => console.log(error),
   });
+  const { runContractFunction: testKeeper } = useWeb3Contract({
+    abi: mainABI,
+    contractAddress: mainAddress,
+    functionName: "testKeeper",
+    params: {},
+    onError: (error) => console.log(error),
+  });
 
   async function updatePlayerUI() {
     let numberOfPlayersFromCall = (await getNumberOfPlayers()).toString();
@@ -94,6 +101,23 @@ export default function PlayerCounter() {
 
   return (
     <div>
+      <div>
+        <button
+          className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+          onClick={async () =>
+            await testKeeper({
+              onSuccess: updatePlayerUI,
+              onError: (error) => console.log(error),
+            })
+          }
+        >
+          {isLoading || isFetching ? (
+            <div className="spinner-border"></div>
+          ) : (
+            <div>Keeper</div>
+          )}
+        </button>
+      </div>
       <div className="pb-2 place-content-center content-center pl-5 pr-3">
         {mainAddress ? (
           <>
