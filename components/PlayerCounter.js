@@ -1,5 +1,5 @@
 import { Table, Tag } from "@web3uikit/core";
-import { mainAddresses, mainABI } from "../constants";
+import { mainAddresses, mainABI, dataAddresses, dataABI } from "../constants";
 import { useMoralis, useWeb3Contract } from "react-moralis";
 import { useEffect, useState } from "react";
 import { useNotification } from "@web3uikit/core";
@@ -11,6 +11,8 @@ export default function PlayerCounter() {
   const chainId = parseInt(chainIdHex);
   const mainAddress =
     chainId in mainAddresses ? mainAddresses[chainId][0] : null;
+  const dataAddress =
+    chainId in dataAddresses ? dataAddresses[chainId][0] : null;
   const [player1, setPlayer1] = useState("N/A");
   const [player2, setPlayer2] = useState("N/A");
   const [player3, setPlayer3] = useState("N/A");
@@ -29,6 +31,20 @@ export default function PlayerCounter() {
     contractAddress: mainAddress,
     functionName: "getNumberOfPlayers",
     params: {},
+    onError: (error) => console.log(error),
+  });
+  const { runContractFunction: getRandomWord } = useWeb3Contract({
+    abi: mainABI,
+    contractAddress: mainAddress,
+    functionName: "getRandomWord",
+    params: { index: 0 },
+    onError: (error) => console.log(error),
+  });
+  const { runContractFunction: getTroopCount } = useWeb3Contract({
+    abi: dataABI,
+    contractAddress: dataAddress,
+    functionName: "getTroopCount",
+    params: { territory: 0 },
     onError: (error) => console.log(error),
   });
   const { runContractFunction: getPlayer1 } = useWeb3Contract({
@@ -59,13 +75,39 @@ export default function PlayerCounter() {
     params: { index: 3 },
     onError: (error) => console.log(error),
   });
-  const { runContractFunction: setupGo } = useWeb3Contract({
+  const { runContractFunction: getRandomNumber } = useWeb3Contract({
     abi: mainABI,
     contractAddress: mainAddress,
-    functionName: "setupGo",
+    functionName: "getRandomNumber",
     params: {},
     onError: (error) => console.log(error),
   });
+  const { runContractFunction: generateTerritoryAndTroops } = useWeb3Contract({
+    abi: mainABI,
+    contractAddress: mainAddress,
+    functionName: "generateTerritoryAndTroops",
+    params: {},
+    onError: (error) => console.log(error),
+  });
+
+  async function generateTerritoryAndTroopsProper() {
+    await generateTerritoryAndTroops();
+  }
+
+  async function printRandomWord() {
+    let randomWord = (await getRandomWord()).toString();
+    console.log(randomWord);
+  }
+
+  async function printTroopCount() {
+    let randomWord = (await getTroopCount()).toString();
+    console.log(randomWord);
+  }
+
+  async function printTroopCount() {
+    let randomWord = (await getTroopCount()).toString();
+    console.log(randomWord);
+  }
 
   async function updatePlayerUI() {
     let numberOfPlayersFromCall = (await getNumberOfPlayers()).toString();
@@ -168,7 +210,7 @@ export default function PlayerCounter() {
           <button
             className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
             onClick={async () =>
-              await setupGo({
+              await getRandomNumber({
                 onSuccess: updatePlayerUI,
                 onError: (error) => console.log(error),
               })
@@ -178,6 +220,69 @@ export default function PlayerCounter() {
               <div className="spinner-border"></div>
             ) : (
               <div>Do Setup</div>
+            )}
+          </button>
+        ) : (
+          <div>Setup Already Complete!</div>
+        )}
+      </div>
+      <div className="place-content-center justify-center content-center place-items-center">
+        {mainAddress ? (
+          <button
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+            onClick={async () =>
+              await printRandomWord({
+                onSuccess: printRandomWord,
+                onError: (error) => console.log(error),
+              })
+            }
+          >
+            {isLoading || isFetching ? (
+              <div className="spinner-border"></div>
+            ) : (
+              <div>Print the randomword</div>
+            )}
+          </button>
+        ) : (
+          <div>Setup Already Complete!</div>
+        )}
+      </div>
+      <div className="place-content-center justify-center content-center place-items-center">
+        {mainAddress ? (
+          <button
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+            onClick={async () =>
+              await generateTerritoryAndTroopsProper({
+                onSuccess: printRandomWord,
+                onError: (error) => console.log(error),
+              })
+            }
+          >
+            {isLoading || isFetching ? (
+              <div className="spinner-border"></div>
+            ) : (
+              <div>Generate the territory and troops</div>
+            )}
+          </button>
+        ) : (
+          <div>Setup Already Complete!</div>
+        )}
+      </div>
+      <div className="place-content-center justify-center content-center place-items-center">
+        {mainAddress ? (
+          <button
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+            onClick={async () =>
+              await getTroopCount({
+                onSuccess: printTroopCount,
+                onError: (error) => console.log(error),
+              })
+            }
+          >
+            {isLoading || isFetching ? (
+              <div className="spinner-border"></div>
+            ) : (
+              <div>Get troops count of territory 0</div>
             )}
           </button>
         ) : (
