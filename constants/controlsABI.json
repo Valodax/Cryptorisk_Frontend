@@ -1,1 +1,516 @@
-[{"type":"constructor","payable":false,"inputs":[{"type":"address","name":"vrfCoordinatorV2"},{"type":"uint64","name":"subscriptionId"},{"type":"bytes32","name":"gasLane"},{"type":"uint32","name":"callbackGasLimit"},{"type":"address","name":"data"}]},{"type":"error","name":"OnlyCoordinatorCanFulfill","inputs":[{"type":"address","name":"have"},{"type":"address","name":"want"}]},{"type":"event","anonymous":false,"name":"CurrentPlayer","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"DiceRolled","inputs":[]},{"type":"event","anonymous":false,"name":"GameOver","inputs":[{"type":"address","name":"winner","indexed":true}]},{"type":"event","anonymous":false,"name":"PlayerAttacking","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"PlayerDeploying","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"PlayerFortifying","inputs":[{"type":"address","name":"player","indexed":true}]},{"type":"event","anonymous":false,"name":"ReceivedMain","inputs":[{"type":"address","name":"main","indexed":true}]},{"type":"event","anonymous":false,"name":"RollingDice","inputs":[{"type":"uint256","name":"s_requestId","indexed":true}]},{"type":"event","anonymous":false,"name":"TransferTroopsAvailable","inputs":[{"type":"uint256","name":"territoryBeingAttacked","indexed":true}]},{"type":"function","name":"add_troop_to_territory","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"index"}],"outputs":[]},{"type":"function","name":"attack_control","constant":false,"payable":false,"inputs":[{"type":"uint8","name":"territoryOwned"},{"type":"uint8","name":"territoryAttacking"},{"type":"uint256","name":"attackingArmies"}],"outputs":[]},{"type":"function","name":"deploy_control","constant":false,"payable":false,"inputs":[{"type":"uint8","name":"amountToDeploy"},{"type":"uint8","name":"location"}],"outputs":[{"type":"bool"}]},{"type":"function","name":"fortify_control","constant":false,"payable":false,"inputs":[{"type":"uint8","name":"territoryMovingFrom"},{"type":"uint8","name":"territoryMovingTo"},{"type":"uint256","name":"troopsMoving"}],"outputs":[{"type":"bool"}]},{"type":"function","name":"gameOver","constant":false,"payable":false,"inputs":[],"outputs":[]},{"type":"function","name":"getAttackStatus","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"bool"}]},{"type":"function","name":"getPlayerTurn","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"address"}]},{"type":"function","name":"getRequestId","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getTotalTroops","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"player"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"get_territory_owner","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"j"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"get_troops_to_deploy","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint8"}]},{"type":"function","name":"push_to_territories","constant":false,"payable":false,"inputs":[{"type":"uint8","name":"playerAwarded"}],"outputs":[]},{"type":"function","name":"rawFulfillRandomWords","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"requestId"},{"type":"uint256[]","name":"randomWords"}],"outputs":[]},{"type":"function","name":"s_mainSet","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint8"}]},{"type":"function","name":"s_playerTurn","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint8"}]},{"type":"function","name":"s_requestId","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"s_troopsToDeploy","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint8"}]},{"type":"function","name":"set_main_address","constant":false,"payable":false,"inputs":[{"type":"address","name":"main"}],"outputs":[]},{"type":"function","name":"set_players","constant":false,"payable":false,"inputs":[{"type":"address[]","name":"players"}],"outputs":[]},{"type":"function","name":"transferTroops","constant":false,"payable":false,"inputs":[{"type":"uint8","name":"territoryMovingFrom"},{"type":"uint8","name":"territoryMovingTo"},{"type":"uint256","name":"troopsMoving"}],"outputs":[]},{"type":"function","name":"troopTransferAfterAttack","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"amountOfTroops"}],"outputs":[]}]
+[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "vrfCoordinatorV2",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "subscriptionId",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "gasLane",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "callbackGasLimit",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "data",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "have",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "want",
+          "type": "address"
+        }
+      ],
+      "name": "OnlyCoordinatorCanFulfill",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "die",
+          "type": "uint256"
+        }
+      ],
+      "name": "AttackerDie",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "CurrentPlayer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "die",
+          "type": "uint256"
+        }
+      ],
+      "name": "DefenderDie",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "DiceRolled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "winner",
+          "type": "address"
+        }
+      ],
+      "name": "GameOver",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "PlayerAttacking",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "PlayerDeploying",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        }
+      ],
+      "name": "PlayerFortifying",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "main",
+          "type": "address"
+        }
+      ],
+      "name": "ReceivedMain",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "s_requestId",
+          "type": "uint256"
+        }
+      ],
+      "name": "RollingDice",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "territoryBeingAttacked",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferTroopsAvailable",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "add_troop_to_territory",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "territoryOwned",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "territoryAttacking",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint16",
+          "name": "attackingArmies",
+          "type": "uint16"
+        }
+      ],
+      "name": "attack_control",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "amountToDeploy",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "location",
+          "type": "uint8"
+        }
+      ],
+      "name": "deploy_control",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "territoryMovingFrom",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "territoryMovingTo",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "troopsMoving",
+          "type": "uint256"
+        }
+      ],
+      "name": "fortify_control",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gameOver",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAttackStatus",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPlayerTurn",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRequestId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "player",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTotalTroops",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "j",
+          "type": "uint256"
+        }
+      ],
+      "name": "get_territory_owner",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "get_troops_to_deploy",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8[]",
+          "name": "territory",
+          "type": "uint8[]"
+        }
+      ],
+      "name": "push_to_territories",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "requestId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "randomWords",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "rawFulfillRandomWords",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "s_mainSet",
+      "outputs": [
+        {
+          "internalType": "enum Controls.mainAddressSent",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "s_playerTurn",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "s_requestId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "s_troopsToDeploy",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "main",
+          "type": "address"
+        }
+      ],
+      "name": "set_main_address",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable[]",
+          "name": "players",
+          "type": "address[]"
+        }
+      ],
+      "name": "set_players",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "territoryMovingFrom",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "territoryMovingTo",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "troopsMoving",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferTroops",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountOfTroops",
+          "type": "uint256"
+        }
+      ],
+      "name": "troopTransferAfterAttack",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
