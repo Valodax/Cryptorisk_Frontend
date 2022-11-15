@@ -90,6 +90,91 @@ export default function PlayerCounter() {
         }
     }, [isWeb3Enabled]);
 
+<<<<<<< HEAD
+  return (
+    <div>
+      <div>
+        <button
+          className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+          onClick={async () =>
+            await testKeeper({
+              onSuccess: updatePlayerUI,
+              onError: (error) => console.log(error),
+            })
+          }
+        >
+          {isLoading || isFetching ? (
+            <div className="spinner-border"></div>
+          ) : (
+            <div>Keeper</div>
+          )}
+        </button>
+      </div>
+      <div className="pb-2 place-content-center content-center pl-5 pr-3">
+        {mainAddress ? (
+          <>
+            <button
+              className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+              onClick={async () =>
+                await getNumberOfPlayers({
+                  onSuccess: updatePlayerUI,
+                  onError: (error) => console.log(error),
+                })
+              }
+            >
+              {isLoading || isFetching ? (
+                <div className="spinner-border"></div>
+              ) : (
+                <div>Refresh Paid Players in Lobby</div>
+              )}
+            </button>
+            ;
+          </>
+        ) : (
+          <div className="text-center text-white">Please connect to Web3</div>
+        )}
+      </div>
+      <div className="place-content-center">
+        {mainAddress ? (
+          <>
+            <Table
+              alignCellItems="center"
+              columnsConfig="120px 1fr"
+              data={[
+                [<Tag color="blue" theme="chips" text="Player 1" />, player1],
+                [<Tag color="green" theme="chips" text="Player 2" />, player2],
+                [<Tag color="yellow" theme="chips" text="Player 3" />, player3],
+                [<Tag color="blue" theme="chips" text="Player 4" />, player4],
+              ]}
+              header={[`PLAYERS: ${numberOfPlayers}`]}
+              noPagination
+              onRowClick={function noRefCheck() {}}
+              tableBackgroundColor="darkgrey"
+            />
+            ;
+          </>
+        ) : (
+          <div>
+            <Table
+              alignCellItems="center"
+              columnsConfig="120px 1fr"
+              data={[
+                [<Tag color="red" theme="chips" text="Player 1" />, player1],
+                [<Tag color="green" theme="chips" text="Player 2" />, player2],
+                [<Tag color="yellow" theme="chips" text="Player 3" />, player3],
+                [<Tag color="blue" theme="chips" text="Player 4" />, player4],
+              ]}
+              header={[`PLAYERS: ${numberOfPlayers}`]}
+              noPagination
+              onRowClick={function noRefCheck() {}}
+              tableBackgroundColor="darkgrey"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+=======
     return (
         <div>
             <div className="pb-2 place-content-center content-center pl-5 pr-3">
@@ -177,4 +262,5 @@ export default function PlayerCounter() {
             </div>
         </div>
     );
+>>>>>>> dc0688f28d971b5bac7f5d7506d356690e1563fe
 }

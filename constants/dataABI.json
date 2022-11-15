@@ -1,372 +1,372 @@
 [
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "controls",
-          "type": "address"
-        }
-      ],
-      "name": "ReceivedControls",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "addTroopToTerritory",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "territory",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint8",
-          "name": "newOwner",
-          "type": "uint8"
-        }
-      ],
-      "name": "changeOwner",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getAllTerritories",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint8",
-              "name": "owner",
-              "type": "uint8"
-            },
-            {
-              "internalType": "uint16",
-              "name": "troops",
-              "type": "uint16"
-            }
-          ],
-          "internalType": "struct Data.Territory_Info[42]",
-          "name": "",
-          "type": "tuple[42]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "continent",
-          "type": "uint256"
-        }
-      ],
-      "name": "getContinentBonus",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getContinentInfo",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint8",
-              "name": "owner",
-              "type": "uint8"
-            },
-            {
-              "internalType": "uint8",
-              "name": "troopBonus",
-              "type": "uint8"
-            }
-          ],
-          "internalType": "struct Data.Continent_Info[6]",
-          "name": "",
-          "type": "tuple[6]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "continent",
-          "type": "uint256"
-        }
-      ],
-      "name": "getContinentOwner",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "territory",
-          "type": "uint256"
-        }
-      ],
-      "name": "getNeighbours",
-      "outputs": [
-        {
-          "internalType": "uint8[]",
-          "name": "",
-          "type": "uint8[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "territoryId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getTerritories",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint8",
-              "name": "owner",
-              "type": "uint8"
-            },
-            {
-              "internalType": "uint16",
-              "name": "troops",
-              "type": "uint16"
-            }
-          ],
-          "internalType": "struct Data.Territory_Info",
-          "name": "",
-          "type": "tuple"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "j",
-          "type": "uint256"
-        }
-      ],
-      "name": "getTerritoryOwner",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "owner",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "territory",
-          "type": "uint256"
-        }
-      ],
-      "name": "getTroopCount",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "initializeContinents",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint8[]",
-          "name": "array_of_territories",
-          "type": "uint8[]"
-        }
-      ],
-      "name": "pushToTerritories",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "index",
-          "type": "uint256"
-        }
-      ],
-      "name": "removeTroopFromTerritory",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "resetData",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "s_continents",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "owner",
-          "type": "uint8"
-        },
-        {
-          "internalType": "uint8",
-          "name": "troopBonus",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "s_controlsSet",
-      "outputs": [
-        {
-          "internalType": "enum Data.controlsAddressSent",
-          "name": "",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "s_neighbours",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "",
-          "type": "uint8"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "s_territories",
-      "outputs": [
-        {
-          "internalType": "uint8",
-          "name": "owner",
-          "type": "uint8"
-        },
-        {
-          "internalType": "uint16",
-          "name": "troops",
-          "type": "uint16"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "controls",
-          "type": "address"
-        }
-      ],
-      "name": "setControlsAddress",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "updateContinents",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "controls",
+        "type": "address"
+      }
+    ],
+    "name": "ReceivedControls",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "addTroopToTerritory",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "territory",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "newOwner",
+        "type": "uint8"
+      }
+    ],
+    "name": "changeOwner",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllTerritories",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "owner",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint16",
+            "name": "troops",
+            "type": "uint16"
+          }
+        ],
+        "internalType": "struct Data.Territory_Info[42]",
+        "name": "",
+        "type": "tuple[42]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "continent",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContinentBonus",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getContinentInfo",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "owner",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint8",
+            "name": "troopBonus",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct Data.Continent_Info[6]",
+        "name": "",
+        "type": "tuple[6]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "continent",
+        "type": "uint256"
+      }
+    ],
+    "name": "getContinentOwner",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "territory",
+        "type": "uint256"
+      }
+    ],
+    "name": "getNeighbours",
+    "outputs": [
+      {
+        "internalType": "uint8[]",
+        "name": "",
+        "type": "uint8[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "territoryId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getTerritories",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "owner",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint16",
+            "name": "troops",
+            "type": "uint16"
+          }
+        ],
+        "internalType": "struct Data.Territory_Info",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "j",
+        "type": "uint256"
+      }
+    ],
+    "name": "getTerritoryOwner",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "owner",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "territory",
+        "type": "uint256"
+      }
+    ],
+    "name": "getTroopCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "initializeContinents",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8[]",
+        "name": "array_of_territories",
+        "type": "uint8[]"
+      }
+    ],
+    "name": "pushToTerritories",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "removeTroopFromTerritory",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "resetData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "s_continents",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "owner",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "troopBonus",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "s_controlsSet",
+    "outputs": [
+      {
+        "internalType": "enum Data.controlsAddressSent",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "s_neighbours",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "s_territories",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "owner",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint16",
+        "name": "troops",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "controls",
+        "type": "address"
+      }
+    ],
+    "name": "setControlsAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "updateContinents",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
