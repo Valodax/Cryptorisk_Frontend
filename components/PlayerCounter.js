@@ -58,6 +58,13 @@ export default function PlayerCounter() {
         params: { index: 3 },
         onError: (error) => console.log(error),
     });
+    const { runContractFunction: setupGo } = useWeb3Contract({
+        abi: mainABI,
+        contractAddress: mainAddress,
+        functionName: "setupGo",
+        params: {},
+        onError: (error) => console.log(error),
+    });
 
     async function updatePlayerUI() {
         let numberOfPlayersFromCall = (await getNumberOfPlayers()).toString();
@@ -145,6 +152,27 @@ export default function PlayerCounter() {
                             tableBackgroundColor="darkgrey"
                         />
                     </div>
+                )}
+            </div>
+            <div className="place-content-center justify-center content-center place-items-center">
+                {mainAddress ? (
+                    <button
+                        className="bg-blue-500 hover:bg-green-700 text-white font-bold place-content-center justify-center px-2 rounded ml-auto"
+                        onClick={async () =>
+                            await setupGo({
+                                onSuccess: updatePlayerUI,
+                                onError: (error) => console.log(error),
+                            })
+                        }
+                    >
+                        {isLoading || isFetching ? (
+                            <div className="spinner-border"></div>
+                        ) : (
+                            <div>Do Setup</div>
+                        )}
+                    </button>
+                ) : (
+                    <div>Setup Already Complete!</div>
                 )}
             </div>
         </div>
